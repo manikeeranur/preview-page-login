@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login_page_preview</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .ram {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 vh-100 bg-secondary text-white">
+          <form action="">
+            <!-- bg-type -->
+            <div class="form-group">
+              <label for="">Background Type:</label>
+              <select name="" class="form-control col-lg-6" id="bg-type">
+                <option value="">Select Background</option>
+                <option value="image">Image</option>
+                <option value="color">Color</option>
+                <option value="html">HTML</option>
+              </select>
+            </div>
+
+            <!-- image -->
+            <div id="image" class="d-none">
+              <label for="">Background-Image:</label>
+              <input type="file" class="file" />
+              <img id="output" class="img-thumbnail my-2" width="200" />
+            </div>
+
+            <!-- color -->
+            <div id="color" class="d-none col-lg-6">
+              <label for=""> Select Color One:</label>
+              <input type="color" class="color1 form-control my-2" name="" />
+              <label for=""> Select Color Two:</label>
+              <input type="color" class="color2 form-control my-2" name="" />
+
+              <button class="btn btn-primary btn-sm" id="gradient">Change Gradient</button>
+            </div>
+            <!-- innerHTML -->
+            <div id="html" class="d-none">
+              <label for="">Inner HTML:</label>
+              <textarea class="form-control" name="" id="" placeholder="Type HTML Code" cols="30" rows="5"></textarea>
+              <button class="btn btn-primary btn-sm my-2" id="changeform">change Form</button>
+            </div>
+            <hr class="bg-white" />
+            <!-- position -->
+            <div class="form-group my-3">
+              <label for="">Form Position:</label>
+              <select name="" class="form-control col-lg-6" id="position">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+              </select>
+            </div>
+            <!-- text color -->
+            <label class="mt-3" for="">Text color:</label>
+            <input type="color" class="form-control col-lg-6" name="" id="text-color" />
+            <!-- btn color -->
+            <label class="mt-3" for="">Button color:</label>
+            <input type="color" class="form-control col-lg-6" name="" id="btn-color" />
+          </form>
+        </div>
+        <div class="col-lg-8">
+          <div class="d-flex border ram p-3 justify-content-start align-items-center">
+            <form class="">
+              <div class="form-group">
+                <label class="font-weight-bold" for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label class="font-weight-bold" for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary font-weight-bold">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#position").change(function () {
+        console.log($(this).val());
+        let position = $("#position").val();
+        if (position === "left") {
+          $(".ram").addClass("justify-content-start");
+          $(".ram").removeClass("justify-content-center");
+          $(".ram").removeClass("justify-content-end");
+        }
+
+        if (position === "center") {
+          $(".ram").addClass("justify-content-center");
+          $(".ram").removeClass("justify-content-start");
+          $(".ram").removeClass("justify-content-end");
+        }
+        if (position === "right") {
+          $(".ram").addClass("justify-content-end");
+          $(".ram").removeClass("justify-content-start");
+          $(".ram").removeClass("justify-content-center");
+        }
+      });
+      $("#bg-type").change(function () {
+        console.log($(this).val());
+        let backgroundType = $("#bg-type").val();
+
+        if (backgroundType === "image") {
+          $("#image").addClass("d-block");
+          $("#color").addClass("d-none");
+          $("#html").addClass("d-none");
+        } else {
+          $("#image").removeClass("d-block");
+        }
+
+        if (backgroundType === "color") {
+          $("#color").addClass("d-block");
+          $("#image").addClass("d-none");
+          $("#html").addClass("d-none");
+        } else {
+          $("#color").removeClass("d-block");
+        }
+
+        if (backgroundType === "html") {
+          $("#html").addClass("d-block");
+          $("#image").addClass("d-none");
+          $("#color").addClass("d-none");
+        } else {
+          $("#html").removeClass("d-block");
+        }
+      });
+      $("#gradient").click(function (e) {
+        let color1 = $(".color1").val();
+        let color2 = $(".color2").val();
+        console.log(color1 + color2);
+        let gradientcolor = "linear-gradient(" + color1 + "," + color2 + ")";
+        $(".ram").css("background-image", gradientcolor);
+
+        console.log(gradientcolor);
+        e.preventDefault();
+      });
+      $("#text-color").change(function () {
+        let textcolor = $(this).val();
+        $(".ram ,.ram button").css("color", textcolor);
+      });
+      $("#btn-color").change(function () {
+        let btncolor = $(this).val();
+        $(".ram button").css("background-color", btncolor);
+      });
+      $("#changeform").click(function (e) {
+        $(".ram").html($("textarea").val());
+        e.preventDefault();
+      });
+      $(".file").change(function (e) {
+        let url = URL.createObjectURL(e.target.files[0]);
+        $("#output").attr("src", url);
+        $(".ram").css("background-image", "linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),URL(" + url + ")");
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
